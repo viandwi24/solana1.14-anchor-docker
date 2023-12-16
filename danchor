@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# get first argument
+cmd=$1
+
+# if first argument is "solana" run solana cli
+if [ "$cmd" = "solana" ]; then
+  shift
+  docker-compose exec -it anchor solana "$@"
+  exit
+fi
+
+# except solana, run anchor cli
+docker-compose exec -it anchor anchor "$@"
